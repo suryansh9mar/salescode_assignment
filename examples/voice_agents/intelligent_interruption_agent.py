@@ -145,11 +145,24 @@ async def entrypoint(ctx: JobContext):
     # ATTACH INTELLIGENT INTERRUPTION HANDLER
     # ============================================================
     # This is where the magic happens!
-    # The handler will automatically filter filler words when agent is speaking
+    # The handler will automatically filter interruptions based on:
+    # 1. Filler words (when agent is speaking)
+    # 2. Confidence score (optional - filters low-confidence background noise)
+    # 3. Word count (optional - filters very short utterances)
     handler = IntelligentInterruptionHandler(
         session=session,
         # Optional: override filler words (otherwise loads from FILLER_WORDS env var)
-        # ignored_words={"uh", "umm", "hmm", "haan", "um", "er", "ah"}
+        # ignored_words={"uh", "umm", "hmm", "haan", "um", "er", "ah"},
+
+        # Optional: Set minimum confidence threshold (0.0-1.0)
+        # Transcripts below this confidence will be ignored when agent is speaking
+        # Example: min_confidence=0.7 will ignore low-confidence background noise
+        min_confidence=0.0,  # Default: 0.0 (disabled)
+
+        # Optional: Set minimum word count to interrupt
+        # Utterances with fewer words will be ignored when agent is speaking
+        # Example: min_words_to_interrupt=2 will ignore single-word utterances
+        min_words_to_interrupt=0,  # Default: 0 (disabled)
     )
     
     logger.info(

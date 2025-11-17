@@ -53,6 +53,9 @@ class MyIntelligentAgent(Agent):
         super().__init__(
             instructions=(
                 "Your name is Alex. You are a helpful voice assistant. "
+                "You can answer questions, have conversations, and help with various tasks. "
+                "You have access to tools to get the current time and set reminders, "
+                "but you can also answer general questions and chat naturally. "
                 "Keep your responses concise and natural. "
                 "Do not use emojis, asterisks, or markdown. "
                 "You are friendly and professional."
@@ -157,12 +160,12 @@ async def entrypoint(ctx: JobContext):
         # Optional: Set minimum confidence threshold (0.0-1.0)
         # Transcripts below this confidence will be ignored when agent is speaking
         # Example: min_confidence=0.7 will ignore low-confidence background noise
-        min_confidence=0.0,  # Default: 0.0 (disabled)
+        min_confidence=0.7,  # Default: 0.0 (disabled)
 
         # Optional: Set minimum word count to interrupt
         # Utterances with fewer words will be ignored when agent is speaking
         # Example: min_words_to_interrupt=2 will ignore single-word utterances
-        min_words_to_interrupt=0,  # Default: 0 (disabled)
+        min_words_to_interrupt=1,  # Default: 0 (disabled)
     )
     
     logger.info(

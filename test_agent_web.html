@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Interruption Agent - Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .test-scenarios {
+            margin-top: 30px;
+        }
+        
+        .scenario {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .scenario.warning {
+            border-left-color: #ffc107;
+        }
+        
+        .scenario h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .scenario p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Agent Deployed Successfully!</h1>
+        <p class="subtitle">Your Intelligent Interruption Agent is now running</p>
+        
+        <div class="status success">
+            ✅ Agent Status: <strong>RUNNING</strong><br>
+            🌐 Server: wss://suryansh-pm8xorb0.livekit.cloud<br>
+            🆔 Worker ID: AW_ZG75NUNvKV66<br>
+            📍 Region: India South
+        </div>
+        
+        <div class="info-box">
+            <h3>🎯 How to Test Your Agent</h3>
+            <p><strong>Option 1: LiveKit Agents Playground (Recommended)</strong></p>
+            <p>1. Go to: <a href="https://agents-playground.livekit.io/" target="_blank">https://agents-playground.livekit.io/</a></p>
+            <p>2. Enter your LiveKit URL: <code>wss://suryansh-pm8xorb0.livekit.cloud</code></p>
+            <p>3. Enter your API credentials from .env file</p>
+            <p>4. Click "Connect" and start talking!</p>
+        </div>
+        
+        <div class="test-scenarios">
+            <h3 style="margin-bottom: 15px; color: #333;">🧪 Test Scenarios</h3>
+            
+            <div class="scenario">
+                <h4>✅ Scenario 1: Normal Conversation</h4>
+                <p>Say: "Hello, how are you?"<br>
+                Expected: Agent responds normally</p>
+            </div>
+            
+            <div class="scenario warning">
+                <h4>⚠️ Scenario 2: Filler Words (Agent Speaking)</h4>
+                <p>While agent is speaking, say: "umm"<br>
+                Expected: Agent IGNORES and continues speaking</p>
+            </div>
+            
+            <div class="scenario">
+                <h4>✅ Scenario 3: Real Interruption</h4>
+                <p>While agent is speaking, say: "wait, stop"<br>
+                Expected: Agent STOPS and listens to you</p>
+            </div>
+            
+            <div class="scenario">
+                <h4>✅ Scenario 4: Filler Words (Agent Quiet)</h4>
+                <p>When agent is quiet, say: "umm"<br>
+                Expected: Agent PROCESSES as valid speech</p>
+            </div>
+        </div>
+        
+        <a href="https://agents-playground.livekit.io/" target="_blank" class="btn">
+            🚀 Open Agents Playground
+        </a>
+    </div>
+</body>
+</html>
+
